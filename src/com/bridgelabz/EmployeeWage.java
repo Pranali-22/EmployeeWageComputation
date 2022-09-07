@@ -19,24 +19,26 @@ public class EmployeeWage {
 		// Driving code
 		Random r = new Random();
 		//final int fullDayHr=8, partDayHr=4;
-		int wagePerHr=20;;
-		int salary=0,hrPerDay;
+		int wagePerHr=20, days=20, totalHrs=100;
+		int salary=0, workingHrs=0, i=0;
 		
-		for(int i=0;i<20;i++) {
+		while(i<days && workingHrs<=totalHrs) {
 			int a=r.nextInt();
 			if(a%3==0) {
-				hrPerDay=8;			
+				workingHrs+=8;			
 			}
 			else if(a%3==1){
-				hrPerDay=4;
+				workingHrs+=4;
 			}
 			else {
-				hrPerDay=0;
+				workingHrs+=0;
 			}
-			salary = salary + wagePerHr*hrPerDay;
+			
 		}
 		
-		System.out.println("Salary of employee for 20 days = "+salary);
+		salary = salary + wagePerHr*workingHrs;
+		
+		System.out.println("Salary of employee for 20 days/100 hours  = "+salary);
 	}
 
 }
