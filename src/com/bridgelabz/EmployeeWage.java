@@ -18,31 +18,25 @@ public class EmployeeWage {
 	public static void main(String[] args) {
 		// Driving code
 		Random r = new Random();
-		int a=r.nextInt();
-		final int fullDayHr=8, partDayHr=4, wagePerHr=20;;
-		int salary; 
-				
-		switch (a%3) {
-			case 0:
-				System.out.println("Employee is present");
-				salary=wagePerHr * fullDayHr;
-				System.out.println("Daily Wage = "+salary);
-				break;
-				
-			case 1:
-				System.out.println("Employee is present parttime");
-				salary=wagePerHr * partDayHr;
-				System.out.println("Daily Wage = "+salary);
-				break;
-				
-			case 2:
-				System.out.println("Employee is absent");
-				System.out.println("Daily Wage = "+0);
-				break;
-			
-			
+		//final int fullDayHr=8, partDayHr=4;
+		int wagePerHr=20;;
+		int salary=0,hrPerDay;
+		
+		for(int i=0;i<20;i++) {
+			int a=r.nextInt();
+			if(a%3==0) {
+				hrPerDay=8;			
+			}
+			else if(a%3==1){
+				hrPerDay=4;
+			}
+			else {
+				hrPerDay=0;
+			}
+			salary = salary + wagePerHr*hrPerDay;
 		}
 		
+		System.out.println("Salary of employee for 20 days = "+salary);
 	}
 
 }
