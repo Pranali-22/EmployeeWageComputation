@@ -17,17 +17,17 @@ public class EmployeeWage {
 	
 	public static void main(String[] args) {
 		// Driving code
-		Random r = new Random();
-		int a=r.nextInt();
+		Random randomObj = new Random();
+		int time=randomObj.nextInt();
 		final int fullDayHr=8, partDayHr=4, wagePerHr=20;;
 		int salary; 
 		
-		if(a%3==0) {
+		if(time%3==0) {
 			System.out.println("Employee is present");
 			salary=wagePerHr * fullDayHr;
 			System.out.println("Daily Wage = "+salary);
 		}
-		else if(a%3==1) {
+		else if(time%3==1) {
 			System.out.println("Employee is present parttime");
 			salary=wagePerHr * partDayHr;
 			System.out.println("Daily Wage = "+salary);
