@@ -41,7 +41,7 @@ public class EmployeeWage {
 			else {
 				workingHrs+=0;
 			}
-
+		workingDays++;
         }
         salary = workingHrs*wagePerHr;
         System.out.println("Salary of employee of compnay "+ companyName +" for "+ totalDays +" days / "+ totalHrs +" hours  = "+salary);
