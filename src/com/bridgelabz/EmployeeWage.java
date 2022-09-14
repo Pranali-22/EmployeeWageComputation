@@ -3,42 +3,40 @@
  */
 package com.bridgelabz;
 
-import java.util.*;
+import java.util.Random;
 
-/**
- * @author Dell
- *
- */
+
 public class EmployeeWage {
 
-	/**
-	 * @param args
-	 */
-	
-	public static void main(String[] args) {
-		// Driving code
-		Random r = new Random();
-		//final int fullDayHr=8, partDayHr=4;
-		int wagePerHr=20, days=20, totalHrs=100;
-		int salary=0, workingHrs=0, i=0;
-		
-		while(i<days && workingHrs<=totalHrs) {
-			int a=r.nextInt();
-			if(a%3==0) {
+	final int wagePerHr = 20;
+	final int totalDays = 20;
+	final int totalHrs = 100;
+    
+    Random randomObj = new Random();
+
+    public void employeeWage(){
+        int workingHrs = 0;
+        int workingDays = 0;
+        while (workingHrs < totalHrs && workingDays < totalDays){
+        	int attendance=randomObj.nextInt(3);
+        	
+			if(attendance==0) {
 				workingHrs+=8;			
 			}
-			else if(a%3==1){
+			else if(attendance==1){
 				workingHrs+=4;
 			}
 			else {
 				workingHrs+=0;
 			}
-			
-		}
-		
-		salary = salary + wagePerHr*workingHrs;
-		
-		System.out.println("Salary of employee for 20 days/100 hours  = "+salary);
-	}
 
+        }
+        System.out.println("Salary of employee for 20 days/100 hours  = "+workingHrs*wagePerHr);
+    }
+
+    public static void main(String[] args) {
+        
+    	EmployeeWage employeeObj = new EmployeeWage();
+        employeeObj.employeeWage();
+    }
 }
