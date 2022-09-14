@@ -33,7 +33,7 @@ public class EmployeeWage {
 			else {
 				workingHrs+=0;
 			}
-			
+			workingHrs++;
 		}
 		
 		salary = salary + wagePerHr*workingHrs;
