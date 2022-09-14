@@ -29,7 +29,7 @@ public class EmployeeWage {
 			else {
 				workingHrs+=0;
 			}
-
+		workingDays++;
         }
         System.out.println("Salary of employee for 20 days/100 hours  = "+workingHrs*wagePerHr);
     }
