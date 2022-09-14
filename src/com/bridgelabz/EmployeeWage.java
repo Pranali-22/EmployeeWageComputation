@@ -17,23 +17,23 @@ public class EmployeeWage {
 	
 	public static void main(String[] args) {
 		// Driving code
-		Random r = new Random();
+		Random randomObj = new Random();
 		//final int fullDayHr=8, partDayHr=4;
-		int wagePerHr=20, days=20, totalHrs=100;
-		int salary=0, workingHrs=0, i=0;
+		int wagePerHr=20, totalDays=20, totalHrs=100;
+		int salary=0, workingHrs=0, days=0;
 		
-		while(i<days && workingHrs<=totalHrs) {
-			int a=r.nextInt();
-			if(a%3==0) {
+		while(days<totalDays && workingHrs<=totalHrs) {
+			int attendance=randomObj.nextInt();
+			if(attendance%3==0) {
 				workingHrs+=8;			
 			}
-			else if(a%3==1){
+			else if(attendance%3==1){
 				workingHrs+=4;
 			}
 			else {
 				workingHrs+=0;
 			}
-			workingHrs++;
+			days++;
 		}
 		
 		salary = salary + wagePerHr*workingHrs;
