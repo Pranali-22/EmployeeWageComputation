@@ -4,11 +4,13 @@
 package com.bridgelabz;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 /**
  * @author Dell
- *UC12 - using array list
+ *UC13 - storing company name and total wage in hashmap
  */
 public class EmployeeWage implements EmpWageCalculationFunctions{
 
@@ -19,16 +21,18 @@ public class EmployeeWage implements EmpWageCalculationFunctions{
 
 	//Creating array to store company data
     private ArrayList<CompanyEmpWage> companyEmpWageArrayList;
-
+    private Map<String,CompanyEmpWage> companyEmpWageMap;
+    
     public EmployeeWage() {
     	companyEmpWageArrayList = new ArrayList<>();
-
+    	companyEmpWageMap = new HashMap<>();
     }
 
     @Override
 	public void addCompanyEmpWage(String companyName, int wagePerHr, int maximumDays, int maximumHrs) {
     	CompanyEmpWage companyEmpWage = new CompanyEmpWage( companyName,  wagePerHr,  maximumDays,  maximumHrs);
     	companyEmpWageArrayList.add(companyEmpWage);
+    	companyEmpWageMap.put(companyName, companyEmpWage);
 
     }
 
@@ -37,7 +41,7 @@ public class EmployeeWage implements EmpWageCalculationFunctions{
 	public void displayCompanyEmpWage() {
     	for (CompanyEmpWage element : companyEmpWageArrayList) {
     		element.totalWage = this.calculateEmployeeWage(element);
-    		//companyEmpWageArray[i].displayCompanyWage();
+    		
     		System.out.println("Total Employee Wage of company "+element.companyName+" is "+element.totalWage);
         }
     }
@@ -66,6 +70,10 @@ public class EmployeeWage implements EmpWageCalculationFunctions{
 
         return empSalary;
    }
+	
+	public void getCompanyWageByName(String companyName) {
+		System.out.println(companyEmpWageMap.get(companyName).totalWage);
+	}
 
     public static void main(String[] args) {
 

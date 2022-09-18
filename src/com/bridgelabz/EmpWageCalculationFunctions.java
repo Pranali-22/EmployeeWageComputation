@@ -13,5 +13,7 @@ public interface EmpWageCalculationFunctions {
 
 	public abstract void addCompanyEmpWage(String companyName, int wagePerHr, int maximumDays, int maximumHrs);
 
-	public void displayCompanyEmpWage();
+	public abstract void displayCompanyEmpWage();
+	
+	public abstract void getCompanyWageByName(String companyName);
 }
