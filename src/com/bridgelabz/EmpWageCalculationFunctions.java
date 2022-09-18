@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.bridgelabz;
 
@@ -10,7 +10,7 @@ package com.bridgelabz;
 public interface EmpWageCalculationFunctions {
 
 	public abstract int calculateEmployeeWage(CompanyEmpWage companyEmpWage);
-	
+
 	public abstract void addCompanyEmpWage(String companyName, int wagePerHr, int maximumDays, int maximumHrs);
 
 	public void displayCompanyEmpWage();

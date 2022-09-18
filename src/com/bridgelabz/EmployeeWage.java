@@ -1,55 +1,57 @@
 /**
- * 
+ *
  */
 package com.bridgelabz;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * @author Dell
- *UC11 - using interface
+ *UC12 - using array list
  */
 public class EmployeeWage implements EmpWageCalculationFunctions{
 
 	Random randomObj = new Random();
-	
+
 	public final int FULL_TIME=1;
-	public final int PART_TIME=2;	
-    
-	int numOfCompany=0;    
-    
+	public final int PART_TIME=2;
+
 	//Creating array to store company data
-    private CompanyEmpWage[] companyEmpWageArray;
-    
+    private ArrayList<CompanyEmpWage> companyEmpWageArrayList;
+
     public EmployeeWage() {
-    	companyEmpWageArray = new CompanyEmpWage[2];
-    	
+    	companyEmpWageArrayList = new ArrayList<>();
+
     }
-    
-    public void addCompanyEmpWage(String companyName, int wagePerHr, int maximumDays, int maximumHrs) {
-    	companyEmpWageArray[numOfCompany] = new CompanyEmpWage( companyName,  wagePerHr,  maximumDays,  maximumHrs);
-    	
-    	numOfCompany++;
+
+    @Override
+	public void addCompanyEmpWage(String companyName, int wagePerHr, int maximumDays, int maximumHrs) {
+    	CompanyEmpWage companyEmpWage = new CompanyEmpWage( companyName,  wagePerHr,  maximumDays,  maximumHrs);
+    	companyEmpWageArrayList.add(companyEmpWage);
+
     }
-	
-    
-    public void displayCompanyEmpWage() {
-    	for(int i=0; i<numOfCompany; i++) {
-    		companyEmpWageArray[i].totalWage = this.calculateEmployeeWage(companyEmpWageArray[i]);
+
+
+    @Override
+	public void displayCompanyEmpWage() {
+    	for (CompanyEmpWage element : companyEmpWageArrayList) {
+    		element.totalWage = this.calculateEmployeeWage(element);
     		//companyEmpWageArray[i].displayCompanyWage();
-    		System.out.println("Total Employee Wage of company "+companyEmpWageArray[i].companyName+" is "+companyEmpWageArray[i].totalWage);
+    		System.out.println("Total Employee Wage of company "+element.companyName+" is "+element.totalWage);
         }
     }
-    
+
+	@Override
 	public int calculateEmployeeWage(CompanyEmpWage companyEmpWage){
         int workingHrs = 0;
         int workingDays = 0;
         int empSalary;
         while (workingHrs <= companyEmpWage.maximumHrs && workingDays < companyEmpWage.maximumDays){
         	int attendance = randomObj.nextInt(3);
-        	
+
 			if(attendance==FULL_TIME) {
-				workingHrs+=8;			
+				workingHrs+=8;
 			}
 			else if(attendance==PART_TIME){
 				workingHrs+=4;
@@ -57,22 +59,22 @@ public class EmployeeWage implements EmpWageCalculationFunctions{
 			else {
 				workingHrs+=0;
 			}
-			
+
 			 workingDays++;
         }
         empSalary = workingHrs*companyEmpWage.wagePerHr;
-        
+
         return empSalary;
    }
 
     public static void main(String[] args) {
-        
+
         EmployeeWage employeeWage = new EmployeeWage();
         employeeWage.addCompanyEmpWage("KPIT",30,30,150);
-        
+
         employeeWage.addCompanyEmpWage("TCS",25,30,100);
-        employeeWage.displayCompanyEmpWage(); 
- 
+        employeeWage.displayCompanyEmpWage();
+
     }
 
 }
