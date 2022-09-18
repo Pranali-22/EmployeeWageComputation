@@ -6,7 +6,7 @@ package com.bridgelabz;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 /**
  * @author Dell
@@ -72,17 +72,22 @@ public class EmployeeWage implements EmpWageCalculationFunctions{
    }
 	
 	public void getCompanyWageByName(String companyName) {
-		System.out.println(companyEmpWageMap.get(companyName).totalWage);
+		System.out.println("Total wage for company "+companyName+" is "+companyEmpWageMap.get(companyName).totalWage);
 	}
 
     public static void main(String[] args) {
 
+    	Scanner input=new Scanner(System.in);
         EmployeeWage employeeWage = new EmployeeWage();
         employeeWage.addCompanyEmpWage("KPIT",30,30,150);
 
         employeeWage.addCompanyEmpWage("TCS",25,30,100);
         employeeWage.displayCompanyEmpWage();
 
+        System.out.println("Enter name of company to get total wage");
+        String name= input.nextLine();
+        employeeWage.getCompanyWageByName(name);
+        
     }
 
 }

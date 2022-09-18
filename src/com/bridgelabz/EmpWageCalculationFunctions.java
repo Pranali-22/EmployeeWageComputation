@@ -16,4 +16,5 @@ public interface EmpWageCalculationFunctions {
 	public abstract void displayCompanyEmpWage();
 	
 	public abstract void getCompanyWageByName(String companyName);
+	
 }

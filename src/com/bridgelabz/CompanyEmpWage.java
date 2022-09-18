@@ -22,5 +22,4 @@ public class CompanyEmpWage {
 		this.maximumDays = maximumDays;
 		this.maximumHrs = maximumHrs;
 	}
-
 }
