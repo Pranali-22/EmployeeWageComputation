@@ -3,62 +3,76 @@
  */
 package com.bridgelabz;
 
-import java.util.Random;
+import java.util.*;
 
 /**
  * @author Dell
- *
+ *UC10
  */
 public class EmployeeWage {
 
-	private String companyName;
-	private int wagePerHr;
-	private int totalDays;
-	private int totalHrs;
-	private int salary;
+	Random randomObj = new Random();
 	
-	EmployeeWage(String name, int wage, int days, int hrs){
-		this.companyName = name; 
-		this.wagePerHr = wage;
-		this.totalDays = days;
-		this.totalHrs = hrs;
-	}
+	public final int FULL_TIME=1;
+	public final int PART_TIME=2;	
     
-    Random randomObj = new Random();
-
-    public void calculateEmployeeWage(){
+	int numOfCompany=0;    
+    
+	//Creating array to store company data
+    private CompanyEmpWage[] companyEmpWageArray;
+    
+    public EmployeeWage() {
+    	companyEmpWageArray = new CompanyEmpWage[2];
+    	
+    }
+    
+    private void addCompanyEmpWage(String companyName, int wagePerHr, int maximumDays, int maximumHrs) {
+    	companyEmpWageArray[numOfCompany] = new CompanyEmpWage( companyName,  wagePerHr,  maximumDays,  maximumHrs);
+    	
+    	numOfCompany++;
+    }
+	
+    
+    public void displayCompanyEmpWage() {
+    	for(int i=0; i<numOfCompany; i++) {
+    		companyEmpWageArray[i].totalWage = this.calculateEmployeeWage(companyEmpWageArray[i]);
+    		//companyEmpWageArray[i].displayCompanyWage();
+    		System.out.println("Total Employee Wage of company "+companyEmpWageArray[i].companyName+" is "+companyEmpWageArray[i].totalWage);
+        }
+    }
+    
+	public int calculateEmployeeWage(CompanyEmpWage companyEmpWage){
         int workingHrs = 0;
         int workingDays = 0;
-        
-        while (workingHrs < totalHrs && workingDays < totalDays){
+        int empSalary;
+        while (workingHrs <= companyEmpWage.maximumHrs && workingDays < companyEmpWage.maximumDays){
         	int attendance = randomObj.nextInt(3);
         	
-			if(attendance==0) {
+			if(attendance==FULL_TIME) {
 				workingHrs+=8;			
 			}
-			else if(attendance==1){
+			else if(attendance==PART_TIME){
 				workingHrs+=4;
 			}
 			else {
 				workingHrs+=0;
 			}
-
+			
+			 workingDays++;
         }
-        salary = workingHrs*wagePerHr;
+        empSalary = workingHrs*companyEmpWage.wagePerHr;
         
+        return empSalary;
    }
 
     public static void main(String[] args) {
         
-    	EmployeeWage employeeObj1 = new EmployeeWage("KPIT",30,30,150);
-    	employeeObj1.calculateEmployeeWage();
-    	System.out.println("Salary of employee of compnay "+ employeeObj1.companyName +" for "+ employeeObj1.totalDays +" days / "+ employeeObj1.totalHrs +" hours  = "+employeeObj1.salary);
-
-    	System.out.println();
-    	EmployeeWage employeeObj2 = new EmployeeWage("TCS",25,30,100);
-        employeeObj2.calculateEmployeeWage();
-        System.out.println("Salary of employee of compnay "+ employeeObj2.companyName +" for "+ employeeObj2.totalDays +" days / "+ employeeObj2.totalHrs +" hours  = "+employeeObj2.salary);
-
+        EmployeeWage employeeWage = new EmployeeWage();
+        employeeWage.addCompanyEmpWage("KPIT",30,30,150);
+        
+        employeeWage.addCompanyEmpWage("TCS",25,30,100);
+        employeeWage.displayCompanyEmpWage(); 
+ 
     }
 
 }
