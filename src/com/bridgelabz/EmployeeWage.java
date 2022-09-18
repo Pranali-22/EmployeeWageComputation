@@ -7,9 +7,9 @@ import java.util.*;
 
 /**
  * @author Dell
- *UC10
+ *UC11 - using interface
  */
-public class EmployeeWage {
+public class EmployeeWage implements EmpWageCalculationFunctions{
 
 	Random randomObj = new Random();
 	
@@ -26,7 +26,7 @@ public class EmployeeWage {
     	
     }
     
-    private void addCompanyEmpWage(String companyName, int wagePerHr, int maximumDays, int maximumHrs) {
+    public void addCompanyEmpWage(String companyName, int wagePerHr, int maximumDays, int maximumHrs) {
     	companyEmpWageArray[numOfCompany] = new CompanyEmpWage( companyName,  wagePerHr,  maximumDays,  maximumHrs);
     	
     	numOfCompany++;

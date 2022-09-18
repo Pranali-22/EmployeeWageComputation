@@ -23,9 +23,6 @@ public class CompanyEmpWage {
 		this.maximumHrs = maximumHrs;
 	}
 	
-	public void displayCompanyWage() {
-		System.out.println("Total Employee Wage of company "+this.companyName+" is "+this.totalWage);
-	}
-
+	
 
 }
